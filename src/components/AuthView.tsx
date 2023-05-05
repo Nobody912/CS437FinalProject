@@ -139,7 +139,7 @@ export default function AuthView() {
       "commits": commits
     }
 
-    console.log("newRepoData", newData)
+    // console.log("newRepoData", newData)
 
     // master or main ref exists, set it as default, otherwise first
     if (response_refs?.data.filter((ref: any) => ref.ref === "refs/heads/master" || ref.ref === "refs/heads/main").length > 0) {
@@ -269,7 +269,7 @@ export default function AuthView() {
       "commits": commits
     }
 
-    console.log("newRepoData updated", newData)
+    // console.log("newRepoData updated", newData)
 
     // set view data
     setRepo(newData)

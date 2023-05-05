@@ -51,6 +51,7 @@ export default function View(props: any) {
             setUsername(process.env.NEXT_PUBLIC_USERNAME)
             setToken(process.env.NEXT_PUBLIC_TOKEN)
             login()
+            console.log("Loaded env vars")
         }
     }, [])
 
