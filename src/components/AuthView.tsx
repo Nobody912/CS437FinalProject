@@ -432,15 +432,25 @@ export default function AuthView() {
               <Link
                 href="https://github.com/settings/tokens"
                 target="_blank"
-                className="inline-flex items-center hover:bg-blue-500 px-3 py-1"
+                className="inline-flex items-center hover:bg-blue-500 px-3 py-1 text-white"
               >
                 Your Tokens <TabExternalIcon className="inline-block w-4 h-4 ml-1.5" />
               </Link>
             </div>
             <div className="flex flex-col py-2">
-              <button onClick={() => auth.logout()} className="inline-flex flex-row px-3 py-1 hover:bg-blue-500">
-                Sign Out
-              </button>
+              {
+                process.env.NEXT_PUBLIC_TOKEN !== "" && process.env.NEXT_PUBLIC_TOKEN !== undefined ? (
+                  <div className="inline-flex flex-row px-3 py-1">
+                    <p className="text-white">
+                      Signed in with environmental variables.
+                    </p>
+                  </div>
+                ) : (
+                  <button onClick={() => auth.logout()} className="inline-flex flex-row px-3 py-1 hover:bg-blue-500 text-white">
+                    Sign Out
+                  </button>
+                )
+              }
             </div>
           </div>
           <div className="flex flex-row gap-x-4">
@@ -453,7 +463,7 @@ export default function AuthView() {
               defaultValue={repo.full_name}
               className="flex px-2 py-1 bg-inherit outline outline-1 outline-white/10 text-white rounded-md text-md" name="repo"
             >
-              {repos.map((repository : GenericObject) => {
+              {repos.map((repository: GenericObject) => {
                 return <option key={Math.random()} value={repository.full_name}>{repository.full_name}</option>;
               })}
             </select>
@@ -556,7 +566,7 @@ export default function AuthView() {
                             <button onClick={() => changeCommit(entry.sha)} key={Math.random()} className={`relative flex flex-row justify-star items-center w-full max-w-full p-4 pr-0 ` + (entry.sha === commit ? "bg-github-slate-700" : "bg-github-slate-800")}>
                               <div className="absolute top-0 right-0 z-10 flex w-8 h-full bg-gradient-to-r from-transparent to-github-slate-800">
                               </div>
-                              <p className="line-clamp-1 text-ellipsis whitespace-nowrap">
+                              <p className="line-clamp-1 text-ellipsis text-white whitespace-nowrap">
                                 <span className="text-sm font-mono px-1 py-0.5 mr-1.5 rounded-md bg-white/10">{entry.sha.substring(0, 7)}</span> {entry.commit.message}
                               </p>
                             </button>

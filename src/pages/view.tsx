@@ -6,7 +6,6 @@ import { AuthContext } from "../components/AuthContext"
 import AuthView from "../components/AuthView"
 
 export default function View(props: any) {
-    const auth = useContext(AuthContext)
     const [loggedIn, setLoggedIn] = useState(false)
     const [username, setUsername] = useState("")
     const [token, setToken] = useState("")
@@ -43,11 +42,23 @@ export default function View(props: any) {
         login()
     }
 
+    // Load env vars
+    useEffect(() => {
+        if (process.env.NEXT_PUBLIC_USERNAME !== "" &&
+            process.env.NEXT_PUBLIC_USERNAME !== undefined &&
+            process.env.NEXT_PUBLIC_TOKEN !== "" &&
+            process.env.NEXT_PUBLIC_TOKEN !== undefined) {
+            setUsername(process.env.NEXT_PUBLIC_USERNAME)
+            setToken(process.env.NEXT_PUBLIC_TOKEN)
+            login()
+        }
+    }, [])
+
     return (
         <AuthContext.Provider
             value={{ isLoggedIn: loggedIn, username: username, token: token, login: login, logout: logout }}
         >
-            <main className="flex flex-col w-screen h-screen max-w-full max-h-full justify-center items-center bg-github-slate-800">
+            <main className="flex flex-col w-screen h-screen max-w-full max-h-full justify-center items-center bg-github-slate-800 overflow-hidden">
                 {!loggedIn ? (
                     <div className="flex flex-col w-full h-full justify-center items-center">
                         <h1 className="text-4xl font-bold text-white mb-6">GitHUD</h1>
@@ -56,7 +67,7 @@ export default function View(props: any) {
                                 <div className="flex flex-col gap-y-4">
                                     <span className="text-md text-white font-normal">GitHub Username</span>
                                     <input
-                                        className="flex px-3 py-2 bg-github-slate-800 border-2 border-white/10 rounded-lg outline-none focus:border-blue-500 transition-all duration-150"
+                                        className="flex px-3 py-2 bg-github-slate-800 border-2 border-white/10 rounded-lg outline-none focus:border-blue-500 transition-all duration-150 text-white font-normal"
                                         type="text"
                                         name="username"
                                     />
@@ -64,7 +75,7 @@ export default function View(props: any) {
                                 <div className="flex flex-col gap-y-4">
                                     <span className="text-md text-white font-normal">Personal Access Token</span>
                                     <input
-                                        className="flex px-3 py-2 bg-github-slate-800 border-2 border-white/10 rounded-lg outline-none focus:border-blue-500 transition-all duration-150"
+                                        className="flex px-3 py-2 bg-github-slate-800 border-2 border-white/10 rounded-lg outline-none focus:border-blue-500 transition-all duration-150 text-white font-normal"
                                         type="text"
                                         name="token"
                                     />
