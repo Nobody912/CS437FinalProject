@@ -88,9 +88,7 @@ export default function AuthView() {
       }
     });
 
-    let response_refs: OctokitResponse<any> | {
-      data: never[];
-    } | undefined = await octo.request(`GET /repos/${owner}/${repo}/git/refs`, {
+    let response_refs: OctokitResponse<any> | void = await octo.request(`GET /repos/${owner}/${repo}/git/refs`, {
       owner: owner,
       repo: repo,
       headers: {
@@ -220,9 +218,7 @@ export default function AuthView() {
       }
     });
 
-    let response_refs: OctokitResponse<any> | {
-      data: never[];
-    } | undefined = await octo.request(`GET /repos/${owner}/${repo}/git/refs`, {
+    let response_refs: OctokitResponse<any> | void = await octo.request(`GET /repos/${owner}/${repo}/git/refs`, {
       owner: owner,
       repo: repo,
       headers: {
@@ -457,7 +453,7 @@ export default function AuthView() {
               defaultValue={repo.full_name}
               className="flex px-2 py-1 bg-inherit outline outline-1 outline-white/10 text-white rounded-md text-md" name="repo"
             >
-              {repos.map((repository) => {
+              {repos.map((repository : GenericObject) => {
                 return <option key={Math.random()} value={repository.full_name}>{repository.full_name}</option>;
               })}
             </select>
