@@ -54,7 +54,7 @@ export default function View(props: any) {
                         <div className="flex flex-col w-full max-w-sm items-center justify-center gap-y-8 p-6 mb-6 bg-github-slate-700 border border-1 border-white/10 rounded-xl">
                             <form onSubmit={handleSubmit} className="flex flex-col w-full gap-y-6">
                                 <div className="flex flex-col gap-y-4">
-                                    <span>GitHub Username</span>
+                                    <span className="text-md text-white font-normal">GitHub Username</span>
                                     <input
                                         className="flex px-3 py-2 bg-github-slate-800 border-2 border-white/10 rounded-lg outline-none focus:border-blue-500 transition-all duration-150"
                                         type="text"
@@ -62,7 +62,7 @@ export default function View(props: any) {
                                     />
                                 </div>
                                 <div className="flex flex-col gap-y-4">
-                                    <span>Personal Access Token</span>
+                                    <span className="text-md text-white font-normal">Personal Access Token</span>
                                     <input
                                         className="flex px-3 py-2 bg-github-slate-800 border-2 border-white/10 rounded-lg outline-none focus:border-blue-500 transition-all duration-150"
                                         type="text"

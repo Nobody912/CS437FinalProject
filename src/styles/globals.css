@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../public/fonts/Inter/inter.css";
+@import "../../public/font/Inter/inter.css";
 
