@@ -17,6 +17,8 @@ export default function View(props: any) {
 
     function logout() {
         setLoggedIn(false)
+        setUsername("")
+        setToken("")
     }
 
     async function handleSubmit(e: any) {
@@ -76,7 +78,7 @@ export default function View(props: any) {
                             <p className="text-lg text-white font-normal">
                                 Need help getting a Personal Access Token?{" "}
                                 <Link
-                                    href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token"
+                                    href="https://github.com/settings/tokens/new?description=GitHUD&scopes=repo"
                                 >
                                     <span className="text-blue-500 font-medium">Learn more →</span>
                                 </Link>
