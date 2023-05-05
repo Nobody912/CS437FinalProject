@@ -18,6 +18,9 @@ module.exports = {
         "github-slate-700": "#161B22",
         "github-green": "#238636",
       },
+      fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      },
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],
